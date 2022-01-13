@@ -1,0 +1,158 @@
+[
+{
+    "model": "webapp.task",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-01-13T07:25:21.249Z",
+        "updated_at": "2022-01-13T07:25:21.249Z",
+        "title": "Создать модель",
+        "description": "Создайте модели задачи, статуса и типа.",
+        "status": 1,
+        "type": 1
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-01-13T07:25:45.892Z",
+        "updated_at": "2022-01-13T07:25:45.892Z",
+        "title": "Этап 2",
+        "description": "Создайте страницы CRUD для задачи на базе классовых представлений:",
+        "status": 1,
+        "type": 1
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-01-13T07:26:16.117Z",
+        "updated_at": "2022-01-13T07:26:16.117Z",
+        "title": "Напишите проект - трекер задач, англ. - issue tracker.",
+        "description": "Трекер задач - это ПО, в котором программисты (и не только) могут записывать информацию о задачах (issue), и отслеживать кто, когда и над какими задачами работал.",
+        "status": 2,
+        "type": 1
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 4,
+    "fields": {
+        "created_at": "2022-01-13T07:26:47.429Z",
+        "updated_at": "2022-01-13T07:26:47.429Z",
+        "title": "Этап 3",
+        "description": "Используйте базовый шаблон. В общем меню должны быть ссылки на главную (список задач) и добавление задачи.",
+        "status": 1,
+        "type": 3
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 5,
+    "fields": {
+        "created_at": "2022-01-13T07:27:22.836Z",
+        "updated_at": "2022-01-13T07:27:22.836Z",
+        "title": "Создать проект",
+        "description": "Создать новый проект",
+        "status": 3,
+        "type": 1
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 6,
+    "fields": {
+        "created_at": "2022-01-13T07:27:51.444Z",
+        "updated_at": "2022-01-13T07:27:51.444Z",
+        "title": "Исправить баги",
+        "description": "Исправить все баги",
+        "status": 1,
+        "type": 2
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 12,
+    "fields": {
+        "created_at": "2022-01-13T09:46:32.560Z",
+        "updated_at": "2022-01-13T10:03:33.955Z",
+        "title": "vbdfbfdbfdb123",
+        "description": "bfdbfdbfdbfd",
+        "status": 2,
+        "type": 1
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-01-13T06:03:59.215Z",
+        "updated_at": "2022-01-13T06:03:59.215Z",
+        "status": "New"
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-01-13T06:04:13.122Z",
+        "updated_at": "2022-01-13T06:04:13.122Z",
+        "status": "In Progress"
+    }
+},
+{
+    "model": "webapp.status",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-01-13T06:04:21.840Z",
+        "updated_at": "2022-01-13T06:04:21.840Z",
+        "status": "Done"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-01-13T06:04:37.802Z",
+        "updated_at": "2022-01-13T06:04:37.802Z",
+        "type": "Task"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-01-13T06:04:43.240Z",
+        "updated_at": "2022-01-13T06:04:43.240Z",
+        "type": "Bug"
+    }
+},
+{
+    "model": "webapp.type",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-01-13T06:04:53.544Z",
+        "updated_at": "2022-01-13T06:04:53.544Z",
+        "type": "Enhancement"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$320000$bB5g4jkCFiBKmyHIGLDcht$T1Ci8bCsUktClCTsvtNlOVHhMf5yYabISEjEfEoOYP4=",
+        "last_login": "2022-01-13T05:58:57.893Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-01-13T05:48:12.082Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
