@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block nav %}{% endblock %}
+{% block body %}
+    <form method="POST">
+    {% csrf_token %}
+        <h2>Вы действительно хотите удалить {{ task.title }}</h2>
+        <input type="submit" class="btn btn-primary" value="Да">
+        <a href="{% url 'index' %}" class="btn btn-primary">НЕТ</a>
+    </form>
+{% endblock %}

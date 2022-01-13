@@ -2,10 +2,10 @@
 {% block title %}{{ task.title }}{% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" href="#">Редактировать</a>
+        <a class="nav-link" href="{% url 'task_edit' task.pk %}">Редактировать</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Удалить задачу</a>
+        <a class="nav-link" href="{% url 'delete_view' task.pk %}">Удалить задачу</a>
     </li>
 {% endblock %}
 {% block body %}

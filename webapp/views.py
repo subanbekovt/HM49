@@ -31,3 +31,36 @@ class TaskView(TemplateView):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
         context['task'] = task
         return context
+
+
+class DeleteView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        return render(request, 'delete_view.html', {'task': task})
+
+    def post(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        task.delete()
+        return redirect('index')
+
+
+class EditView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        form = TaskForm(initial={'title': task.title,
+                                 'description': task.description,
+                                 'status': task.status,
+                                 'type': task.type})
+        return render(request, 'task_edit.html', {'task': task, 'form': form})
+
+    def post(self, request, *args, **kwargs):
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        form = TaskForm(data=request.POST)
+        if form.is_valid():
+            task.title = form.cleaned_data.get('title')
+            task.description = form.cleaned_data.get('description')
+            task.status = form.cleaned_data.get('status')
+            task.type = form.cleaned_data.get('type')
+            task.save()
+            return redirect("task_view", pk=task.pk)
+        return render(request, 'task_edit.html', {'task': task, 'form': form})
