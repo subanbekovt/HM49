@@ -19,7 +19,7 @@
                         <div class="d-flex">
                             <p class="fw-bold">Тип:</p><p class="ms-auto">{{ task.type }}</p>
                         </div>
-                        <a href="#">Подробнее...</a>
+                        <a href="{% url "task_view" task.pk %}">Подробнее...</a>
                     </div>
                 </div>
             </div>

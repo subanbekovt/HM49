@@ -23,3 +23,11 @@ class CreateView(TemplateView):
             new_task = form.save()
             return redirect('task_view', pk=new_task.pk)
         return render((request, 'add_view', {"form": form}))
+
+
+class TaskView(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        task = get_object_or_404(Task, pk=kwargs.get('pk'))
+        context['task'] = task
+        return context
