@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView
 
 from webapp.forms import TaskForm
 from webapp.models import Task
@@ -22,7 +21,7 @@ class CreateView(TemplateView):
         if form.is_valid():
             new_task = form.save()
             return redirect('task_view', pk=new_task.pk)
-        return render((request, 'add_view', {"form": form}))
+        return render(request, 'create_task.html', {'form': form})
 
 
 class TaskView(TemplateView):

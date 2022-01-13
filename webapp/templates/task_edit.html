@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Обновить задачу{% endblock %}
+{% block title %}Обновить задачу {{ task.title }}{% endblock %}
 {% block nav %}
     <li class="nav-item">
         <a class="nav-link" href="{% url 'task_view' task.pk %}">Вернуться к статье</a>
