@@ -34,7 +34,7 @@ class TaskForm(forms.ModelForm):
             'status': "Выберите статус задачи",
             'types': "Выберите тип задачи"
         }
-    
+
     def clean(self):
         cleaned_data = super().clean()
         title = cleaned_data['title']
