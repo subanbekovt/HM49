@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.forms import widgets
 from webapp.models import Task
 
@@ -33,3 +34,13 @@ class TaskForm(forms.ModelForm):
             'status': "Выберите статус задачи",
             'types': "Выберите тип задачи"
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        title = cleaned_data['title']
+        description = cleaned_data['description']
+        if len(title) < 5:
+            self.add_error('title', ValidationError(f'Значение должно быть длиннее 5 символов {title} не подходит'))
+        if title == description:
+            raise ValidationError('Название и описание задачи не должны совпадать. Опишите задачу как можно подробнее!')
+        return cleaned_data
