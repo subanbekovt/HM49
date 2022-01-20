@@ -34,7 +34,7 @@ class TaskForm(forms.ModelForm):
             'status': "Выберите статус задачи",
             'types': "Выберите тип задачи"
         }
-
+    
     def clean(self):
         cleaned_data = super().clean()
         title = cleaned_data['title']
@@ -44,3 +44,5 @@ class TaskForm(forms.ModelForm):
         if title == description:
             raise ValidationError('Название и описание задачи не должны совпадать. Опишите задачу как можно подробнее!')
         return cleaned_data
+
+

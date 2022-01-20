@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
 
+from webapp.base import FormView as CustomFormView
 from webapp.forms import TaskForm
 from webapp.models import Task
 
@@ -11,17 +12,26 @@ class IndexView(TemplateView):
         return render(request, 'index.html', {'tasks': tasks})
 
 
-class CreateView(TemplateView):
-    def get(self, request, *args, **kwargs):
-        form = TaskForm()
-        return render(request, 'create_task.html', {'form': form})
+class CreateView(CustomFormView):
+    form_class = TaskForm
+    template_name = "create_task.html"
 
-    def post(self, request, *args, **kwargs):
-        form = TaskForm(data=request.POST)
-        if form.is_valid():
-            new_task = form.save()
-            return redirect('task_view', pk=new_task.pk)
-        return render(request, 'create_task.html', {'form': form})
+    def form_valid(self, form):
+        self.object = form.save()
+        return super().form_valid(form)
+
+    def get_redirect_url(self):
+        return redirect("task_view", pk=self.object.pk)
+    # def get(self, request, *args, **kwargs):
+    #     form = TaskForm()
+    #     return render(request, 'create_task.html', {'form': form})
+    #
+    # def post(self, request, *args, **kwargs):
+    #     form = TaskForm(data=request.POST)
+    #     if form.is_valid():
+    #         new_task = form.save()
+    #         return redirect('task_view', pk=new_task.pk)
+    #     return render(request, 'create_task.html', {'form': form})
 
 
 class TaskView(TemplateView):
