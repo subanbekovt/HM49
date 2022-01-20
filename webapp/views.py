@@ -49,13 +49,15 @@ class EditView(TemplateView):
         form = TaskForm(initial={'title': task.title,
                                  'description': task.description,
                                  'status': task.status,
-                                 'type': task.type})
+                                 'type': task.types})
         return render(request, 'task_edit.html', {'task': task, 'form': form})
 
     def post(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
         form = TaskForm(data=request.POST)
         if form.is_valid():
+            types = form.cleaned_data.get('types')
+            task.types.set(types)
             task.title = form.cleaned_data.get('title')
             task.description = form.cleaned_data.get('description')
             task.status = form.cleaned_data.get('status')

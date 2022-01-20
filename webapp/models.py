@@ -13,7 +13,7 @@ class Task(BaseModel):
     title = models.CharField(max_length=200, null=False, blank=False, verbose_name="Краткое описание")
     description = models.CharField(max_length=2000, null=True, blank=True, verbose_name="Полное описание")
     status = models.ForeignKey('webapp.Status', on_delete=models.PROTECT, related_name='statuses', verbose_name='Статус')
-    type = models.ForeignKey('webapp.Type', on_delete=models.PROTECT, related_name='types', verbose_name='Тип задачи')
+    # type = models.ForeignKey('webapp.Type', on_delete=models.PROTECT, related_name='types', verbose_name='Тип задачи')
     types = models.ManyToManyField('webapp.Type', related_name='task_types', blank=True)
 
     def __str__(self):

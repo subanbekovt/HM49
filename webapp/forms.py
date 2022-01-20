@@ -6,7 +6,10 @@ from webapp.models import Task
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ["title", "description", "status", "type"]
+        fields = ["title", "description", "status", "types"]
+        widgets = {
+            'types': widgets.CheckboxSelectMultiple
+        }
         error_messages = {
             'title': {
                 'required': "Поле обязательно для заполнения",
@@ -19,7 +22,7 @@ class TaskForm(forms.ModelForm):
                 'required': "Поле обязательно для заполнения",
                 'max_length': "Не более 200 знаков"
             },
-            'type': {
+            'types': {
                 'required': "Поле обязательно для заполнения",
                 'max_length': "Не более 200 знаков"
             }
@@ -28,5 +31,5 @@ class TaskForm(forms.ModelForm):
             'name': "Введите свое название",
             'description': "Введите описание задачи",
             'status': "Выберите статус задачи",
-            'type': "Выберите тип задачи"
+            'types': "Выберите тип задачи"
         }

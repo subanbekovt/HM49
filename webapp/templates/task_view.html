@@ -18,7 +18,13 @@
                             <p class="fw-bold">Статус:</p><p class="ms-auto">{{ task.status }}</p>
                         </div>
                         <div class="d-flex">
-                            <p class="fw-bold">Тип:</p><p class="ms-auto">{{ task.type }}</p>
+                            <p class="fw-bold">Тип:</p>
+                            <p class="ms-auto">
+                                {% for type in task.types.all %}
+                                    {{ type.type }}
+                                    {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
                         </div>
                         <div class="d-flex">
                             <p class="fw-bold">Создан:</p><p class="ms-auto">{{ task.created_at }}</p>
