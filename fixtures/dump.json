@@ -4,11 +4,15 @@
     "pk": 1,
     "fields": {
         "created_at": "2022-01-13T07:25:21.249Z",
-        "updated_at": "2022-01-13T07:25:21.249Z",
+        "updated_at": "2022-01-20T10:17:16.271Z",
         "title": "Создать модель",
         "description": "Создайте модели задачи, статуса и типа.",
         "status": 1,
-        "type": 1
+        "types": [
+            1,
+            2,
+            3
+        ]
     }
 },
 {
@@ -20,7 +24,9 @@
         "title": "Этап 2",
         "description": "Создайте страницы CRUD для задачи на базе классовых представлений:",
         "status": 1,
-        "type": 1
+        "types": [
+            1
+        ]
     }
 },
 {
@@ -32,7 +38,9 @@
         "title": "Напишите проект - трекер задач, англ. - issue tracker.",
         "description": "Трекер задач - это ПО, в котором программисты (и не только) могут записывать информацию о задачах (issue), и отслеживать кто, когда и над какими задачами работал.",
         "status": 2,
-        "type": 1
+        "types": [
+            1
+        ]
     }
 },
 {
@@ -44,7 +52,9 @@
         "title": "Этап 3",
         "description": "Используйте базовый шаблон. В общем меню должны быть ссылки на главную (список задач) и добавление задачи.",
         "status": 1,
-        "type": 3
+        "types": [
+            3
+        ]
     }
 },
 {
@@ -56,7 +66,9 @@
         "title": "Создать проект",
         "description": "Создать новый проект",
         "status": 3,
-        "type": 1
+        "types": [
+            1
+        ]
     }
 },
 {
@@ -68,19 +80,81 @@
         "title": "Исправить баги",
         "description": "Исправить все баги",
         "status": 1,
-        "type": 2
+        "types": [
+            2
+        ]
     }
 },
 {
     "model": "webapp.task",
-    "pk": 12,
+    "pk": 13,
     "fields": {
-        "created_at": "2022-01-13T09:46:32.560Z",
-        "updated_at": "2022-01-13T10:03:33.955Z",
-        "title": "vbdfbfdbfdb123",
-        "description": "bfdbfdbfdbfd",
+        "created_at": "2022-01-20T10:17:28.209Z",
+        "updated_at": "2022-01-20T10:17:28.209Z",
+        "title": "fdsgfdgfdgfd",
+        "description": "gfdgfdgfdgfd",
+        "status": 1,
+        "types": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 14,
+    "fields": {
+        "created_at": "2022-01-20T12:14:22.434Z",
+        "updated_at": "2022-01-20T12:14:22.434Z",
+        "title": "123333",
+        "description": "1233213",
+        "status": 1,
+        "types": []
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 16,
+    "fields": {
+        "created_at": "2022-01-20T12:41:18.694Z",
+        "updated_at": "2022-01-20T12:53:36.524Z",
+        "title": "vdsfdsfdsTEST",
+        "description": "fdsfdsfdsfdsfdsfs",
+        "status": 1,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 17,
+    "fields": {
+        "created_at": "2022-01-20T12:46:25.839Z",
+        "updated_at": "2022-01-20T12:46:25.840Z",
+        "title": "gfdgfdgfdg",
+        "description": "gfdgfdgdfgfd",
+        "status": 1,
+        "types": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 18,
+    "fields": {
+        "created_at": "2022-01-22T14:03:23.320Z",
+        "updated_at": "2022-01-22T14:03:23.320Z",
+        "title": "Deleniti quae Nam similique dolore quibusdam",
+        "description": "Repudiandae nostrud nesciunt ipsum sit sit non debitis obcaecati ut quidem quidem sint dolorum commodi nesciunt qui perferendis",
         "status": 2,
-        "type": 1
+        "types": [
+            1
+        ]
     }
 },
 {
@@ -135,24 +209,6 @@
         "created_at": "2022-01-13T06:04:53.544Z",
         "updated_at": "2022-01-13T06:04:53.544Z",
         "type": "Enhancement"
-    }
-},
-{
-    "model": "auth.user",
-    "pk": 1,
-    "fields": {
-        "password": "pbkdf2_sha256$320000$bB5g4jkCFiBKmyHIGLDcht$T1Ci8bCsUktClCTsvtNlOVHhMf5yYabISEjEfEoOYP4=",
-        "last_login": "2022-01-13T05:58:57.893Z",
-        "is_superuser": true,
-        "username": "admin",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2022-01-13T05:48:12.082Z",
-        "groups": [],
-        "user_permissions": []
     }
 }
 ]
