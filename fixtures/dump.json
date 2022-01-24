@@ -158,6 +158,36 @@
     }
 },
 {
+    "model": "webapp.task",
+    "pk": 22,
+    "fields": {
+        "created_at": "2022-01-24T12:29:13.862Z",
+        "updated_at": "2022-01-24T12:29:13.862Z",
+        "title": "Bug fix",
+        "description": "Need to fixs bugs",
+        "status": 3,
+        "types": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.task",
+    "pk": 23,
+    "fields": {
+        "created_at": "2022-01-24T12:29:44.863Z",
+        "updated_at": "2022-01-24T12:29:44.863Z",
+        "title": "Fixxxxxxxxxxxxxx  BUG",
+        "description": "gdsgfmdoskglffmdskmfdklsmf",
+        "status": 2,
+        "types": [
+            2,
+            3
+        ]
+    }
+},
+{
     "model": "webapp.status",
     "pk": 1,
     "fields": {
