@@ -46,3 +46,5 @@ class TaskForm(forms.ModelForm):
         return cleaned_data
 
 
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=30, required=False, label="Найти")
