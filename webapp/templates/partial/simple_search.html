@@ -1,7 +1,7 @@
-<form class="text-center" action="" method="GET">
-    <label for="{{ form.search.id_for_label }}">{{ form.search.label }}:</label>
+<form class="d-flex" action="" method="GET">
+    <label class="" for="{{ form.search.id_for_label }}"></label>
     {{ form.search }}
-    <input type="submit" value="Поиск">
+    <input class="form-control me-2" type="submit" placeholder="Search" aria-label="Search" value="Поиск">
     {% for error in form.search.errors %}
         <p class="form-error">{{ error }}</p>
     {% endfor %}
