@@ -29,7 +29,6 @@ class IndexView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         if self.search_value:
-            print(self.search_value)
             query = Q(title__icontains=self.search_value)
             queryset = queryset.filter(query)
         return queryset.order_by("status")

@@ -13,19 +13,22 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ task.pk }}. {{ task.title }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ task.created_at }}</h6>
-                        <div class="d-flex">
-                            <p class="fw-bold">Статус:</p><p class="ms-auto">{{ task.status }}</p>
+                        <div class="pt-auto">
+                            <div class="d-flex align-items-end">
+                                <p class="fw-bold">Статус:</p>
+                                <p class="ms-auto">{{ task.status }}</p>
+                            </div>
+                            <div class="d-flex">
+                                <p class="fw-bold">Тип:</p>
+                                <p class="ms-auto">
+                                    {% for type in task.types.all %}
+                                        {{ type.type }}
+                                        {% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            <a href="{% url "task_view" task.pk %}">Подробнее...</a>
                         </div>
-                        <div class="d-flex">
-                            <p class="fw-bold">Тип:</p>
-                            <p class="ms-auto">
-                                {% for type in task.types.all %}
-                                    {{ type.type }}
-                                    {% if not forloop.last %}, {% endif %}
-                                {% endfor %}
-                            </p>
-                        </div>
-                        <a href="{% url "task_view" task.pk %}">Подробнее...</a>
                     </div>
                 </div>
             </div>

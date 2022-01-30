@@ -56,3 +56,19 @@ class Type(BaseModel):
         db_table = 'Types'
         verbose_name = 'Тип задачи'
         verbose_name_plural = 'Типы задач'
+
+
+class Project(models.Model):
+    created_at = models.DateTimeField(verbose_name="Дата создания")
+    updated_at = models.DateTimeField(null=True, blank=True, verbose_name="Дата изменения")
+    title = models.CharField(max_length=50, verbose_name='Название')
+    description = models.CharField(max_length=2000, verbose_name="Описание")
+
+    def __str__(self):
+        return f"{self.title, self.created_at}"
+
+    class Meta:
+        db_table = 'Projects'
+        verbose_name = 'Проект'
+        verbose_name_plural = 'Проекты'
+

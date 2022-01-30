@@ -1,5 +1,5 @@
 from django.contrib import admin
-from webapp.models import Task, Status, Type
+from webapp.models import Task, Status, Type, Project
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -20,6 +20,13 @@ class TypeAdmin(admin.ModelAdmin):
     fields = ['type']
 
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'description', 'created_at', 'updated_at']
+    fields = ['title', 'description', 'created_at', 'updated_at']
+
+
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Status, StatusAdmin)
 admin.site.register(Type, TypeAdmin)
+admin.site.register(Project, ProjectAdmin)
+
