@@ -22,8 +22,8 @@ class Task(BaseModel):
                                    verbose_name="Полное описание",
                                    validators=(MinLengthValidator(10),))
     status = models.ForeignKey('webapp.Status', on_delete=models.PROTECT, related_name='statuses', verbose_name='Статус')
-    # type = models.ForeignKey('webapp.Type', on_delete=models.PROTECT, related_name='types', verbose_name='Тип задачи')
     types = models.ManyToManyField('webapp.Type', related_name='task_types', blank=True)
+    project = models.ForeignKey('webapp.Project', on_delete=models.CASCADE, related_name='projects', verbose_name='Проект')
 
     def __str__(self):
         return f"{self.pk}. {self.title} - {self.status}"
