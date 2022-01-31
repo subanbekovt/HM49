@@ -17,7 +17,7 @@ from webapp.models import Task
 class IndexView(ListView):
     model = Task
     context_object_name = 'tasks'
-    template_name = 'index.html'
+    template_name = 'task/index.html'
     paginate_by = 8
     paginate_orphans = 0
 
@@ -72,7 +72,7 @@ class TaskView(TemplateView):
 class DeleteView(TemplateView):
     def get(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
-        return render(request, 'delete_view.html', {'task': task})
+        return render(request, 'task/delete_task.html', {'task': task})
 
     def post(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs.get('pk'))
@@ -82,7 +82,7 @@ class DeleteView(TemplateView):
 
 class EditView(FormView):
     form_class = TaskForm
-    template_name = "task_edit.html"
+    template_name = "task/task_edit.html"
 
     def dispatch(self, request, *args, **kwargs):
         self.task = self.get_object()

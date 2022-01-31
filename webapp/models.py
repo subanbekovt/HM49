@@ -65,7 +65,7 @@ class Project(models.Model):
     description = models.CharField(max_length=2000, verbose_name="Описание")
 
     def __str__(self):
-        return f"{self.title, self.created_at}"
+        return f"{self.title}"
 
     class Meta:
         db_table = 'Projects'
