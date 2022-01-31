@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
+from django.urls import reverse
 
 
 class BaseModel(models.Model):
@@ -24,6 +25,9 @@ class Task(BaseModel):
     status = models.ForeignKey('webapp.Status', on_delete=models.PROTECT, related_name='statuses', verbose_name='Статус')
     types = models.ManyToManyField('webapp.Type', related_name='task_types', blank=True)
     project = models.ForeignKey('webapp.Project', on_delete=models.CASCADE, related_name='projects', verbose_name='Проект')
+
+    def get_absolute_url(self):
+        return reverse('article_view', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.pk}. {self.title} - {self.status}"
@@ -60,9 +64,12 @@ class Type(BaseModel):
 
 class Project(models.Model):
     created_at = models.DateTimeField(verbose_name="Дата создания")
-    updated_at = models.DateTimeField(null=True, blank=True, verbose_name="Дата изменения")
+    closed_at = models.DateTimeField(null=True, blank=True, verbose_name="Дата изменения")
     title = models.CharField(max_length=50, verbose_name='Название')
     description = models.CharField(max_length=2000, verbose_name="Описание")
+
+    def get_absolute_url(self):
+        return reverse('project_view', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.title}"

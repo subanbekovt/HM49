@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, FormView, ListView, CreateView
 
 from webapp.base import FormView as CustomFormView
 from webapp.forms import TaskForm, SearchForm
@@ -49,16 +49,10 @@ class IndexView(ListView):
             return self.form.cleaned_data.get("search")
 
 
-class CreateView(CustomFormView):
+class TaskCreate(CreateView):
+    model = Task
     form_class = TaskForm
-    template_name = "create_task.html"
-
-    def form_valid(self, form):
-        self.object = form.save()
-        return super().form_valid(form)
-
-    def get_redirect_url(self):
-        return redirect("task_view", pk=self.object.pk)
+    template_name = "task/create_task.html"
 
 
 class TaskView(TemplateView):

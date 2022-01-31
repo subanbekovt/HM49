@@ -1,7 +1,9 @@
 from django.db.models import Q
-from django.views.generic import ListView, DetailView
-from webapp.forms import SearchForm
-from webapp.models import Project
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView
+from webapp.forms import SearchForm, ProjectForm
+from webapp.models import Project, Task
 
 
 class ProjectIndexView(ListView):
@@ -48,3 +50,17 @@ class ProjectView(DetailView):
         projects = self.object.projects.order_by("title")
         context['projects'] = projects
         return context
+
+
+class ProjectCreate(CreateView):
+    model = Project
+    template_name = 'project/create.html'
+    form_class = ProjectForm
+
+    # def form_valid(self, form):
+    #     task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
+    #     form.instance.task = task
+    #     return super().form_valid(form)
+    #
+    # def get_success_url(self):
+    #     return reverse('project_index')
