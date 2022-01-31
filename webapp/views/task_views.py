@@ -29,7 +29,7 @@ class IndexView(ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         if self.search_value:
-            query = Q(title__icontains=self.search_value)
+            query = Q(title__icontains=self.search_value) | Q(description__icontains=self.search_value)
             queryset = queryset.filter(query)
         return queryset.order_by("status")
 
@@ -59,6 +59,7 @@ class TaskCreate(CreateView):
         task = form.save(commit=False)
         task.project_id = project.id
         task.save()
+        form.save_m2m()
         return redirect('project_view', pk=project.pk)
 
 
