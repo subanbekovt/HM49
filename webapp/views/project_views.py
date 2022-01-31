@@ -1,6 +1,5 @@
 from django.db.models import Q
-from django.views.generic import ListView
-
+from django.views.generic import ListView, DetailView
 from webapp.forms import SearchForm
 from webapp.models import Project
 
@@ -38,3 +37,14 @@ class ProjectIndexView(ListView):
     def get_search_value(self):
         if self.form.is_valid():
             return self.form.cleaned_data.get("search")
+
+
+class ProjectView(DetailView):
+    template_name = 'project/view.html'
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        projects = self.object.projects.order_by("title")
+        context['projects'] = projects
+        return context
