@@ -1,11 +1,11 @@
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.views.generic import TemplateView, FormView, ListView, CreateView
+from django.views.generic import TemplateView, FormView, ListView, CreateView, DetailView, UpdateView
 
 from webapp.base import FormView as CustomFormView
 from webapp.forms import TaskForm, SearchForm
-from webapp.models import Task
+from webapp.models import Task, Project
 
 
 # class IndexView(TemplateView):
@@ -54,13 +54,17 @@ class TaskCreate(CreateView):
     form_class = TaskForm
     template_name = "task/create_task.html"
 
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs.get("pk"))
+        task = form.save(commit=False)
+        task.project_id = project.id
+        task.save()
+        return redirect('project_view', pk=project.pk)
 
-class TaskView(TemplateView):
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        task = get_object_or_404(Task, pk=kwargs.get('pk'))
-        context['task'] = task
-        return context
+
+class TaskView(DetailView):
+    template_name = 'task/task_view.html'
+    model = Task
 
 
 class DeleteView(TemplateView):
@@ -74,30 +78,36 @@ class DeleteView(TemplateView):
         return redirect('index')
 
 
-class EditView(FormView):
-    form_class = TaskForm
+class EditView(UpdateView):
+    model = Task
     template_name = "task/task_edit.html"
+    form_class = TaskForm
 
-    def dispatch(self, request, *args, **kwargs):
-        self.task = self.get_object()
-        return super(EditView, self).dispatch(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['task'] = self.task
-        return context
-
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['instance'] = self.task
-        return kwargs
-
-    def form_valid(self, form):
-        self.task = form.save()
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse('task_view', kwargs={"pk": self.task.pk})
-
-    def get_object(self):
-        return get_object_or_404(Task, pk=self.kwargs.get("pk"))
+# class EditView(FormView):
+#     form_class = TaskForm
+#     template_name = "task/task_edit.html"
+#
+#     def dispatch(self, request, *args, **kwargs):
+#         self.task = self.get_object()
+#         return super(EditView, self).dispatch(request, *args, **kwargs)
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['task'] = self.task
+#         return context
+#
+#     def get_form_kwargs(self):
+#         kwargs = super().get_form_kwargs()
+#         kwargs['instance'] = self.task
+#         return kwargs
+#
+#     def form_valid(self, form):
+#         self.task = form.save()
+#         return super().form_valid(form)
+#
+#     def get_success_url(self):
+#         return reverse('task_view', kwargs={"pk": self.task.pk})
+#
+#     def get_object(self):
+#         return get_object_or_404(Task, pk=self.kwargs.get("pk"))

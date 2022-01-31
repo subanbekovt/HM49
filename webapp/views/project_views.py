@@ -57,10 +57,5 @@ class ProjectCreate(CreateView):
     template_name = 'project/create.html'
     form_class = ProjectForm
 
-    # def form_valid(self, form):
-    #     task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
-    #     form.instance.task = task
-    #     return super().form_valid(form)
-    #
-    # def get_success_url(self):
-    #     return reverse('project_index')
+    def get_success_url(self):
+        return reverse('project_index')

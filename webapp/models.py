@@ -27,7 +27,7 @@ class Task(BaseModel):
     project = models.ForeignKey('webapp.Project', on_delete=models.CASCADE, related_name='projects', verbose_name='Проект')
 
     def get_absolute_url(self):
-        return reverse('article_view', kwargs={'pk': self.pk})
+        return reverse('task_view', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.pk}. {self.title} - {self.status}"
