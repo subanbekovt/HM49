@@ -1,6 +1,6 @@
 from django.urls import path
 
-from webapp.views.task_views import IndexView, CreateView, TaskView, DeleteView, EditView
+from webapp.views import IndexView, CreateView, TaskView, DeleteView, EditView, ProjectIndexView
 
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('task/<int:pk>/', TaskView.as_view(template_name="task/task_view.html"), name="task_view"),
     path('del/<int:pk>/', DeleteView.as_view(template_name="task/delete_task.html"), name="delete_view"),
     path('edit/<int:pk>/', EditView.as_view(template_name="task/task_edit.html"), name="task_edit"),
+    path('project/', ProjectIndexView.as_view(), name="project_index"),
 ]
