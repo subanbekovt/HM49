@@ -7,6 +7,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{% url 'tasks_index' %}">Список всех задач</a>
     </li>
+    {% include 'partial/simple_search.html' %}
 {% endblock %}
 {% block body %}
     <div class="row">
