@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{{ project.title }}{% endblock %}
+{% block title %}Project {{ project.pk }}{% endblock %}
 {% block nav %}
     <li class="nav-item">
         <a class="nav-link" href="{% url 'project_edit' project.pk %}">Редактировать проект</a>
