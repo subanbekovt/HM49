@@ -23,7 +23,7 @@ class ProjectIndexView(ListView):
         if self.search_value:
             query = Q(title__icontains=self.search_value) | Q(description__icontains=self.search_value)
             queryset = queryset.filter(query)
-        return queryset.order_by("title")
+        return queryset.order_by("-pk")
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
