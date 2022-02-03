@@ -9,7 +9,8 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ["title", "description", "status", "types"]
         widgets = {
-            'types': widgets.CheckboxSelectMultiple
+            'types': widgets.CheckboxSelectMultiple,
+            'description': widgets.Textarea
         }
         error_messages = {
             'title': {
@@ -55,5 +56,6 @@ class ProjectForm(forms.ModelForm):
         model = Project
         exclude = []
         widgets = {
-            'created_at': widgets.DateInput(attrs={'type': 'date'})
+            'created_at': widgets.DateInput(attrs={'type': 'date'}),
+            'description': widgets.Textarea
         }

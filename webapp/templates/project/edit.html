@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Обновить задачу {{ task.title }}{% endblock %}
+{% block title %}Обновить проект {{ project.title }}{% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'task_view' task.pk %}">Вернуться к задаче</a>
+        <a class="nav-link" href="{% url 'project_view' project.pk %}">Вернуться к проекту</a>
     </li>
 {% endblock %}
 {% block body %}
-    <h1>Обновить задачу</h1>
+    <h1>Обновить проект</h1>
     <form method="POST">
         {% include "partial/form.html" with button_text="Изменить" %}
     </form>

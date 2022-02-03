@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Main page{% endblock %}
+{% block title %}{{ project.title }}{% endblock %}
 {% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'project_edit' project.pk %}">Редактировать проект</a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="{% url 'add_view' project.pk %}">Создать новую задачу</a>
     </li>
@@ -20,6 +23,7 @@
             </div>
         </div>
     </div>
+    <h4 class="bg-success text-white text-center mb-3">Список задач проекта {{ project.title }}</h4>
     <div class="row">
         {% for task in projects %}
             <div class="col col-xl-3 mb-3">

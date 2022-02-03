@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from webapp.forms import SearchForm, ProjectForm
 from webapp.models import Project, Task
 
@@ -59,3 +59,15 @@ class ProjectCreate(CreateView):
 
     def get_success_url(self):
         return reverse('project_index')
+
+
+class ProjectEdit(UpdateView):
+    form_class = ProjectForm
+    template_name = "project/edit.html"
+    model = Project
+
+
+# class ArticleDeleteView(DeleteView):
+#     template_name = 'article/delete.html'
+#     model = Project
+
