@@ -222,23 +222,6 @@
 },
 {
     "model": "webapp.task",
-    "pk": 26,
-    "fields": {
-        "created_at": "2022-01-27T11:33:03.346Z",
-        "updated_at": "2022-01-27T11:33:03.346Z",
-        "title": "Tempore vel enim laboriosam et veniam quo quos fugiat est ea ex magni est",
-        "description": "Unde minima qui ratione pariatur Sit esse voluptatem enim non minima corrupti sint",
-        "status": 1,
-        "project": 1,
-        "types": [
-            1,
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "webapp.task",
     "pk": 27,
     "fields": {
         "created_at": "2022-01-27T11:33:09.552Z",
@@ -338,44 +321,18 @@
 },
 {
     "model": "webapp.task",
-    "pk": 34,
+    "pk": 36,
     "fields": {
-        "created_at": "2022-01-31T12:25:36.157Z",
-        "updated_at": "2022-01-31T12:25:51.398Z",
-        "title": "Proident voluptas illo nisi deleniti facilis similique ab et cum nisi ut ex ea",
-        "description": "Accusamus quia ea ab itaque voluptatem Irure ut rerum in eveniet quaerat doloribus sunt",
-        "status": 1,
+        "created_at": "2022-01-31T12:26:28.619Z",
+        "updated_at": "2022-02-03T10:59:04.441Z",
+        "title": "Cupidatat dolores aut cupidatat obcaecati iure modi vitae aliquid ut deleniti nihil temporibus ut tempora in id blanditiis doloribus culpa",
+        "description": "Aliqua Nulla dolore et aperiam eveniet incididunt consectetur eu est voluptas sequi magni et illo et beatae illum sed Aliqua Nulla dolore et aperiam eveniet incididunt consectetur eu est voluptas sequi magni et illo et beatae illum sed",
+        "status": 3,
         "project": 3,
         "types": [
             1,
             2
         ]
-    }
-},
-{
-    "model": "webapp.task",
-    "pk": 35,
-    "fields": {
-        "created_at": "2022-01-31T12:26:01.996Z",
-        "updated_at": "2022-01-31T12:26:01.996Z",
-        "title": "Dolores est sint doloribus dolor dolores ea provident adipisicing autem sed expedita ut perferendis incidunt non ut nihil ut voluptas",
-        "description": "Quia incididunt facilis enim voluptatem Nam dolore voluptatem Do vel harum labore quia animi vel expedita sequi",
-        "status": 1,
-        "project": 3,
-        "types": []
-    }
-},
-{
-    "model": "webapp.task",
-    "pk": 36,
-    "fields": {
-        "created_at": "2022-01-31T12:26:28.619Z",
-        "updated_at": "2022-01-31T12:26:28.619Z",
-        "title": "Cupidatat dolores aut cupidatat obcaecati iure modi vitae aliquid ut deleniti nihil temporibus ut tempora in id blanditiis doloribus culpa",
-        "description": "Aliqua Nulla dolore et aperiam eveniet incididunt consectetur eu est voluptas sequi magni et illo et beatae illum sed",
-        "status": 3,
-        "project": 3,
-        "types": []
     }
 },
 {
@@ -479,8 +436,8 @@
     "fields": {
         "created_at": "2022-01-30T18:00:00Z",
         "closed_at": null,
-        "title": "Another project",
-        "description": "Quo labore voluptatem laborum Facere"
+        "title": "Проект 911",
+        "description": "Facere dolore consequatur Ut excepteur amet dignissimos velit ut voluptatem ut architecto"
     }
 },
 {
@@ -490,27 +447,7 @@
         "created_at": "2022-01-30T18:00:00Z",
         "closed_at": null,
         "title": "Another project",
-        "description": "Quo labore voluptatem laborum Facere"
-    }
-},
-{
-    "model": "webapp.project",
-    "pk": 4,
-    "fields": {
-        "created_at": "2022-01-30T18:00:00Z",
-        "closed_at": null,
-        "title": "Another project",
-        "description": "Quo labore voluptatem laborum Facere"
-    }
-},
-{
-    "model": "webapp.project",
-    "pk": 5,
-    "fields": {
-        "created_at": "2022-01-30T18:00:00Z",
-        "closed_at": null,
-        "title": "Another project",
-        "description": "Quo labore voluptatem laborum Facere"
+        "description": "Ullam sed fuga Similique facilis irure dolores Ullam sed fuga Similique facilis irure dolores"
     }
 },
 {
