@@ -7,8 +7,17 @@
 {% endblock %}
 {% block body %}
     <div class="row">
-        <div class="col">
-            <h1 class="text-center mt-5 mb-5 text-primary">Список задач</h1>
+        <div class="col bg-secondary text-white mb-3">
+            <h1 class="text-center mt-5 mb-5">{{ project.title }}</h1>
+            <h3>{{ project.description }}</h3>
+            <div class="d-flex align-items-end">
+                <p class="fw-bold">Дата начало:</p>
+                <p class="ms-auto">{{ project.created_at }}</p>
+            </div>
+            <div class="d-flex align-items-end">
+                <p class="fw-bold">Дата окончание:</p>
+                <p class="ms-auto">{{ project.updated_at }}</p>
+            </div>
         </div>
     </div>
     <div class="row">
