@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Main page{% endblock %}
 {% block nav %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'webapp:project_add' %}">Создать новый проект</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'webapp:tasks_index' %}">Список всех задач</a>
-    </li>
-    {% include 'partial/simple_search.html' %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:project_add' %}">Создать новый проект</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:tasks_index' %}">Список всех задач</a>
+        </li>
+        {% include 'partial/simple_search.html' %}
 {% endblock %}
 {% block body %}
     <div class="row">

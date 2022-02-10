@@ -1,5 +1,5 @@
 from django.db.models import Q
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from webapp.forms import SearchForm, ProjectForm
@@ -52,7 +52,7 @@ class ProjectView(DetailView):
         return context
 
 
-class ProjectCreate(CreateView):
+class ProjectCreate(LoginRequiredMixin, CreateView):
     model = Project
     template_name = 'project/create.html'
     form_class = ProjectForm
@@ -61,13 +61,13 @@ class ProjectCreate(CreateView):
         return reverse('webapp:project_index')
 
 
-class ProjectEdit(UpdateView):
+class ProjectEdit(LoginRequiredMixin, UpdateView):
     form_class = ProjectForm
     template_name = "project/edit.html"
     model = Project
 
 
-class ProjectDelete(DeleteView):
+class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
     template_name = "project/delete_project.html"
 

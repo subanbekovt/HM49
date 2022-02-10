@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
@@ -42,7 +43,7 @@ class IndexView(ListView):
             return self.form.cleaned_data.get("search")
 
 
-class TaskCreate(CreateView):
+class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = "task/create_task.html"
@@ -61,7 +62,7 @@ class TaskView(DetailView):
     model = Task
 
 
-class TaskDelete(DeleteView):
+class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = "task/delete_task.html"
 
@@ -69,7 +70,7 @@ class TaskDelete(DeleteView):
         return reverse('webapp:project_view', kwargs={'pk': self.object.project_id})
 
 
-class EditView(UpdateView):
+class EditView(LoginRequiredMixin, UpdateView):
     model = Task
     template_name = "task/task_edit.html"
     form_class = TaskForm
