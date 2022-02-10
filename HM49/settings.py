@@ -114,8 +114,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-LOGOUT_REDIRECT_URL = "webapp:task_index"
-LOGIN_REDIRECT_URL = "webapp:task_index"
+LOGOUT_REDIRECT_URL = "webapp:project_index"
+LOGIN_REDIRECT_URL = "webapp:project_index"
 
 LOGIN_URL = 'accounts:login'
 
