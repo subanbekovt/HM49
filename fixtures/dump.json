@@ -367,6 +367,22 @@
     }
 },
 {
+    "model": "webapp.task",
+    "pk": 39,
+    "fields": {
+        "created_at": "2022-02-03T11:15:37.178Z",
+        "updated_at": "2022-02-03T11:15:37.178Z",
+        "title": "Rem consequuntur enim ipsam similique adipisicing vel ipsam sit nisi soluta",
+        "description": "Commodo sed odio suscipit sequi proident fugit exercitationem sint tenetur",
+        "status": 1,
+        "project": 9,
+        "types": [
+            1,
+            2
+        ]
+    }
+},
+{
     "model": "webapp.status",
     "pk": 1,
     "fields": {
@@ -498,6 +514,26 @@
         "closed_at": null,
         "title": "TESTSETESTEST",
         "description": "Mollit rerum ad enim eveniet neque in ut"
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 11,
+    "fields": {
+        "created_at": "2000-03-30T18:00:00Z",
+        "closed_at": null,
+        "title": "Ex aut fugit aut aspernatur et dolor quod id dict",
+        "description": "Repellendus Expedita aut qui occaecat"
+    }
+},
+{
+    "model": "webapp.project",
+    "pk": 12,
+    "fields": {
+        "created_at": "2000-03-30T18:00:00Z",
+        "closed_at": null,
+        "title": "Ex aut fugit aut aspernatur et dolor quod id dict",
+        "description": "Repellendus Expedita aut qui occaecat test trstrestes"
     }
 }
 ]
