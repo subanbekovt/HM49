@@ -53,7 +53,7 @@ class TaskCreate(CreateView):
         task.project_id = project.id
         task.save()
         form.save_m2m()
-        return redirect('project_view', pk=project.pk)
+        return redirect('webapp:project_view', pk=project.pk)
 
 
 class TaskView(DetailView):
@@ -66,7 +66,7 @@ class TaskDelete(DeleteView):
     template_name = "task/delete_task.html"
 
     def get_success_url(self):
-        return reverse('project_view', kwargs={'pk': self.object.project_id})
+        return reverse('webapp:project_view', kwargs={'pk': self.object.project_id})
 
 
 class EditView(UpdateView):

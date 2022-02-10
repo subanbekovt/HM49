@@ -58,7 +58,7 @@ class ProjectCreate(CreateView):
     form_class = ProjectForm
 
     def get_success_url(self):
-        return reverse('project_index')
+        return reverse('webapp:project_index')
 
 
 class ProjectEdit(UpdateView):
@@ -72,5 +72,5 @@ class ProjectDelete(DeleteView):
     template_name = "project/delete_project.html"
 
     def get_success_url(self):
-        return reverse('project_index')
+        return reverse('webapp:project_index')
 

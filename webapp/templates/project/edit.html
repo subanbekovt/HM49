@@ -2,7 +2,7 @@
 {% block title %}Обновить проект {{ project.title }}{% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'project_view' project.pk %}">Вернуться к проекту</a>
+        <a class="nav-link" href="{% url 'webapp:project_view' project.pk %}">Вернуться к проекту</a>
     </li>
 {% endblock %}
 {% block body %}

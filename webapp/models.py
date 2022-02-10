@@ -27,7 +27,7 @@ class Task(BaseModel):
     project = models.ForeignKey('webapp.Project', on_delete=models.CASCADE, related_name='projects', verbose_name='Проект')
 
     def get_absolute_url(self):
-        return reverse('task_view', kwargs={'pk': self.pk})
+        return reverse('webapp:task_view', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.pk}. {self.title} - {self.status}"
@@ -69,7 +69,7 @@ class Project(models.Model):
     description = models.CharField(max_length=2000, verbose_name="Описание")
 
     def get_absolute_url(self):
-        return reverse('project_view', kwargs={'pk': self.pk})
+        return reverse('webapp:project_view', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.title}"

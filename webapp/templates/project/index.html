@@ -2,10 +2,10 @@
 {% block title %}Main page{% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'project_add' %}">Создать новый проект</a>
+        <a class="nav-link" href="{% url 'webapp:project_add' %}">Создать новый проект</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'tasks_index' %}">Список всех задач</a>
+        <a class="nav-link" href="{% url 'webapp:tasks_index' %}">Список всех задач</a>
     </li>
     {% include 'partial/simple_search.html' %}
 {% endblock %}
@@ -31,7 +31,7 @@
                                 <p class="fw-bold">Дата окончание:</p>
                                 <p class="ms-auto">{{ project.updated_at }}</p>
                             </div>
-                            <a href="{% url "project_view" project.pk %}">Подробнее...</a>
+                            <a href="{% url "webapp:project_view" project.pk %}">Подробнее...</a>
                         </div>
                     </div>
                 </div>

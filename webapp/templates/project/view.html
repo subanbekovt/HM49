@@ -2,13 +2,13 @@
 {% block title %}Project {{ project.pk }}{% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'project_edit' project.pk %}">Редактировать проект</a>
+        <a class="nav-link" href="{% url 'webapp:project_edit' project.pk %}">Редактировать проект</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'project_delete' project.pk %}">Удалить проект</a>
+        <a class="nav-link" href="{% url 'webapp:project_delete' project.pk %}">Удалить проект</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'add_view' project.pk %}">Создать новую задачу</a>
+        <a class="nav-link" href="{% url 'webapp:add_view' project.pk %}">Создать новую задачу</a>
     </li>
 {% endblock %}
 {% block body %}
@@ -48,7 +48,7 @@
                                     {% endfor %}
                                 </p>
                             </div>
-                            <a href="{% url "task_view" task.pk %}">Подробнее...</a>
+                            <a href="{% url "webapp:task_view" task.pk %}">Подробнее...</a>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 {% block title %}Обновить задачу {{ task.title }}{% endblock %}
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'task_view' task.pk %}">Вернуться к задаче</a>
+        <a class="nav-link" href="{% url 'webapp:task_view' task.pk %}">Вернуться к задаче</a>
     </li>
 {% endblock %}
 {% block body %}
