@@ -25,6 +25,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:login' %}">Вход</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:registration' %}?next={{ request.get_full_path }}">Регистрация</a>
+                    </li>
                 {% else %}
                     {% block nav %}
                     {% endblock %}

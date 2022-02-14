@@ -6,7 +6,7 @@
     <h1>Вход</h1>
     <form method="post" class="text-center ms-auto me-auto w-50">
         {% csrf_token %}
-        {% if has_error %}
+        {% if form.errors %}
             <p class="text-danger">Неверное имя пользователя или пароль.</p>
         {% endif %}
         <div class="form-group">
