@@ -54,7 +54,7 @@ class SearchForm(forms.Form):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = []
+        fields = ['title', 'description', 'created_at']
         widgets = {
             'created_at': widgets.DateInput(attrs={'type': 'date'}),
             'description': widgets.Textarea

@@ -60,6 +60,13 @@ class ProjectCreate(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('webapp:project_index')
 
+    def form_valid(self, form):
+        value = form.save(commit=False)
+        value.save()
+        value.users.set((self.request.user.id, ))
+        form.save_m2m()
+        return super().form_valid(form)
+
 
 class ProjectEdit(LoginRequiredMixin, UpdateView):
     form_class = ProjectForm
