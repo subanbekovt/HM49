@@ -1,6 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.core.validators import MinLengthValidator
 from django.urls import reverse
+
+
+User = get_user_model()
 
 
 class BaseModel(models.Model):
@@ -67,6 +71,7 @@ class Project(models.Model):
     closed_at = models.DateTimeField(null=True, blank=True, verbose_name="Дата изменения")
     title = models.CharField(max_length=50, verbose_name='Название')
     description = models.CharField(max_length=2000, verbose_name="Описание")
+    users = models.ManyToManyField(User, related_name='projects', default=1)
 
     def get_absolute_url(self):
         return reverse('webapp:project_view', kwargs={'pk': self.pk})
