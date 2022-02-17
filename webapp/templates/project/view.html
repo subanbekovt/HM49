@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}Project {{ project.pk }}{% endblock %}
 {% block nav %}
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'webapp:project_edit' project.pk %}">Редактировать проект</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'webapp:project_delete' project.pk %}">Удалить проект</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'webapp:add_view' project.pk %}">Создать новую задачу</a>
-        </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:project_edit' project.pk %}">Редактировать проект</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:project_delete' project.pk %}">Удалить проект</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:add_view' project.pk %}">Создать новую задачу</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:project_add_user' project.pk %}">Добавить пользователя</a>
+    </li>
 {% endblock %}
 {% block body %}
     <div class="row">

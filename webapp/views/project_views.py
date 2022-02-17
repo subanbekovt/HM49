@@ -1,8 +1,9 @@
+from django.contrib.auth.models import User
 from django.db.models import Q
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from webapp.forms import SearchForm, ProjectForm
+from webapp.forms import SearchForm, ProjectForm, UserForm
 from webapp.models import Project, Task
 
 
@@ -52,32 +53,50 @@ class ProjectView(DetailView):
         return context
 
 
-class ProjectCreate(LoginRequiredMixin, CreateView):
+class ProjectCreate(PermissionRequiredMixin, CreateView):
     model = Project
     template_name = 'project/create.html'
     form_class = ProjectForm
+    permission_required = 'webapp.add_project'
 
     def get_success_url(self):
         return reverse('webapp:project_index')
 
     def form_valid(self, form):
-        value = form.save(commit=False)
-        value.save()
-        value.users.set((self.request.user.id, ))
+        project = form.save(commit=False)
+        project.save()
+        project.users.set((self.request.user.id, ))
         form.save_m2m()
         return super().form_valid(form)
 
 
-class ProjectEdit(LoginRequiredMixin, UpdateView):
+class ProjectEdit(PermissionRequiredMixin, UpdateView):
     form_class = ProjectForm
     template_name = "project/edit.html"
     model = Project
+    permission_required = 'webapp.change_project'
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user in self.get_object().users.all()
 
 
-class ProjectDelete(LoginRequiredMixin, DeleteView):
+class ProjectAddUser(PermissionRequiredMixin, UpdateView):
+    form_class = UserForm
+    template_name = "project/add_user.html"
+    model = Project
+    permission_required = 'webapp.add_user', 'Капитан', 'Менеджер проекта'
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user in self.get_object().users.all()
+
+
+class ProjectDelete(PermissionRequiredMixin, DeleteView):
     model = Project
     template_name = "project/delete_project.html"
+    permission_required = 'webapp.delete_project'
 
     def get_success_url(self):
         return reverse('webapp:project_index')
 
+    def has_permission(self):
+        return super().has_permission() or self.request.user in self.get_object().users.all()

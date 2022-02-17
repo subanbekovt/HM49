@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
@@ -43,10 +43,11 @@ class IndexView(ListView):
             return self.form.cleaned_data.get("search")
 
 
-class TaskCreate(LoginRequiredMixin, CreateView):
+class TaskCreate(PermissionRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = "task/create_task.html"
+    permission_required = 'webapp.add_task'
 
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get("pk"))
@@ -56,21 +57,33 @@ class TaskCreate(LoginRequiredMixin, CreateView):
         form.save_m2m()
         return redirect('webapp:project_view', pk=project.pk)
 
+    def has_permission(self):
+        project = get_object_or_404(Project, pk=self.kwargs.get("pk"))
+        return super().has_permission() or self.request.user in project.users.all()
+
 
 class TaskView(DetailView):
     template_name = 'task/task_view.html'
     model = Task
 
 
-class TaskDelete(LoginRequiredMixin, DeleteView):
+class TaskDelete(PermissionRequiredMixin, DeleteView):
     model = Task
     template_name = "task/delete_task.html"
+    permission_required = "webapp.delete_task"
 
     def get_success_url(self):
         return reverse('webapp:project_view', kwargs={'pk': self.object.project_id})
 
+    def has_permission(self):
+        return super().has_permission() or self.request.user in self.get_object().project.users.all()
 
-class EditView(LoginRequiredMixin, UpdateView):
+
+class EditView(PermissionRequiredMixin, UpdateView):
     model = Task
     template_name = "task/task_edit.html"
     form_class = TaskForm
+    permission_required = "webapp.change_task"
+
+    def has_permission(self):
+        return super().has_permission() or self.request.user in self.get_object().project.users.all()

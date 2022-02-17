@@ -37,6 +37,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
                     </li>
+                    <h2>{{ request.user }}</h2>
                 {% endif %}
             </ul>
         </div>
