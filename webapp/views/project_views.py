@@ -84,7 +84,7 @@ class ProjectAddUser(PermissionRequiredMixin, UpdateView):
     form_class = UserForm
     template_name = "project/add_user.html"
     model = Project
-    permission_required = 'webapp.add_user', 'Капитан', 'Менеджер проекта'
+    permission_required = 'webapp.add_user', 'webapp.Капитан', 'webapp.Менеджер проекта'
 
     def has_permission(self):
         return super().has_permission() or self.request.user in self.get_object().users.all()
