@@ -35,7 +35,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'webapp:tasks_index' %}">Список всех задач</a>
                     </li>
-                    {% if perms.webapp.can_add_users_to_project %}
+                    {% if perms.auth.view_user %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'accounts:user_index' %}">Список всех пользователей</a>
                         </li>

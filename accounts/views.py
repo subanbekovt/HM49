@@ -38,10 +38,14 @@ class UserProfileView(DetailView):
         return super(UserProfileView, self).get_context_data(**kwargs)
 
 
-class UserIndexView(ListView):
+class UserIndexView(PermissionRequiredMixin, ListView):
     model = get_user_model()
     context_object_name = 'user_object'
     template_name = 'user_index.html'
     paginate_by = 8
     paginate_orphans = 0
+    permission_required = "auth.view_user"
+
+    # def has_permission(self):
+    #     return super().has_permission() and self.request.user in self.get_object().project.users.all()
 
