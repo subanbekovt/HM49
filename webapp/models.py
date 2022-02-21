@@ -83,4 +83,7 @@ class Project(models.Model):
         db_table = 'Projects'
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
+        permissions = [
+            ('can_add_users_to_project', 'Может добавлять пользователей в проект')
+        ]
 

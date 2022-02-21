@@ -1,4 +1,5 @@
 from django.contrib.auth import login, get_user_model
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -32,6 +33,7 @@ class UserProfileView(DetailView):
     model = get_user_model()
     template_name = 'profile.html'
     context_object_name = 'user_object'
-    
+
     def get_context_data(self, **kwargs):
         return super(UserProfileView, self).get_context_data(**kwargs)
+
