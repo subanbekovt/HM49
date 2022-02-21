@@ -76,7 +76,7 @@ class TaskDelete(PermissionRequiredMixin, DeleteView):
         return reverse('webapp:project_view', kwargs={'pk': self.object.project_id})
 
     def has_permission(self):
-        return super().has_permission() or self.request.user in self.get_object().project.users.all()
+        return super().has_permission() and self.request.user in self.get_object().project.users.all()
 
 
 class EditView(PermissionRequiredMixin, UpdateView):
@@ -86,4 +86,4 @@ class EditView(PermissionRequiredMixin, UpdateView):
     permission_required = "webapp.change_task"
 
     def has_permission(self):
-        return super().has_permission() or self.request.user in self.get_object().project.users.all()
+        return super().has_permission() and self.request.user in self.get_object().project.users.all()

@@ -77,8 +77,7 @@ class ProjectEdit(PermissionRequiredMixin, UpdateView):
     permission_required = 'webapp.change_project'
 
     def has_permission(self):
-        return super().has_permission() or self.request.user in self.get_object().users.all() and \
-               self.request.user.groups.filter(name='manager').exists()
+        return super().has_permission() and self.request.user in self.get_object().users.all()
 
 
 class ProjectAddUser(PermissionRequiredMixin, UpdateView):
@@ -88,8 +87,7 @@ class ProjectAddUser(PermissionRequiredMixin, UpdateView):
     permission_required = 'webapp.can_add_users_to_project'
 
     def has_permission(self):
-        return super().has_permission() or self.request.user in self.get_object().users.all() and \
-               self.request.user.groups.filter(name='lead').exists()
+        return super().has_permission() and self.request.user in self.get_object().users.all()
 
 
 class ProjectDelete(PermissionRequiredMixin, DeleteView):
@@ -101,5 +99,4 @@ class ProjectDelete(PermissionRequiredMixin, DeleteView):
         return reverse('webapp:project_index')
 
     def has_permission(self):
-        return super().has_permission() or self.request.user in self.get_object().users.all() and \
-               self.request.user.groups.filter(name='manager').exists()
+        return super().has_permission() and self.request.user in self.get_object().users.all()
