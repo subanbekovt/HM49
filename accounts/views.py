@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 
 from accounts.forms import MyUserCreationForm
 from accounts.models import Profile
@@ -36,4 +36,12 @@ class UserProfileView(DetailView):
 
     def get_context_data(self, **kwargs):
         return super(UserProfileView, self).get_context_data(**kwargs)
+
+
+class UserIndexView(ListView):
+    model = get_user_model()
+    context_object_name = 'user_object'
+    template_name = 'user_index.html'
+    paginate_by = 8
+    paginate_orphans = 0
 

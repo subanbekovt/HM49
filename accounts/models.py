@@ -27,3 +27,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'Профиль: {self.user}. {self.id}'
+
+    # def get_avatar(self):
+    #     if not self.avatar:
+    #         return "YOUR DEFAULT IMAGE"
+    #     else:
+    #         return os.path.join(settings.MEDIA_URL, self.Profile_image.name)

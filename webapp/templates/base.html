@@ -24,9 +24,6 @@
             <ul class="navbar-nav">
                 {% if not user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'webapp:tasks_index' %}">Список всех задач</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Вход</a>
                     </li>
                     <li class="nav-item">
@@ -36,7 +33,16 @@
                     {% block nav %}
                     {% endblock %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:user_profile' user.id %}">Профиль <span class="fw-bold">{{ user.username }}</span></a>
+                        <a class="nav-link" href="{% url 'webapp:tasks_index' %}">Список всех задач</a>
+                    </li>
+                    {% if perms.webapp.can_add_users_to_project %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:user_index' %}">Список всех пользователей</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:user_profile' user.id %}">Профиль <span
+                                class="fw-bold">{{ user.username }}</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>

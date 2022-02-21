@@ -19,10 +19,6 @@
                             <p class="fw-bold">Дата окончание:</p>
                             <p class="ms-auto">{{ project.updated_at }}</p>
                         </div>
-                        {% for user in project.users.all %}
-                            {{ user }}
-                            {% if not forloop.last %}, {% endif %}
-                        {% endfor %}
                         <a href="{% url "webapp:project_view" project.pk %}">Подробнее...</a>
                     </div>
                 </div>
