@@ -1,10 +1,9 @@
-from django.contrib.auth.models import User
 from django.db.models import Q
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from webapp.forms import SearchForm, ProjectForm, UserForm
-from webapp.models import Project, Task
+from webapp.models import Project
 
 
 class ProjectIndexView(ListView):

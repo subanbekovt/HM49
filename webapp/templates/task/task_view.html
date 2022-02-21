@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}Task {{ task.pk }}{% endblock %}
 {% block nav %}
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'webapp:task_edit' task.pk %}">Редактировать</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'webapp:delete_view' task.pk %}">Удалить задачу</a>
-    </li>
+    {% if perms.webapp.change_task %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:task_edit' task.pk %}">Редактировать</a>
+        </li>
+    {% endif %}
+    {% if perms.webapp.delete_task %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'webapp:delete_view' task.pk %}">Удалить задачу</a>
+        </li>
+    {% endif %}
 {% endblock %}
 {% block body %}
     <div class="col col-xl-3 mb-3">
