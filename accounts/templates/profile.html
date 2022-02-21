@@ -3,31 +3,46 @@
 {% block nav %}{% endblock nav %}
 {% block body %}
     <h1>Профиль ползователя {{ user_object.username }}</h1>
-    <table class="table">
-    <tbody>
-        <tr>
-            <td>Имя</td><td>{{ user_object.first_name }}</td>
-        </tr>
-        <tr>
-            <td>Фамилия</td><td>{{ user_object.last_name }}</td>
-        </tr>
-            <td>Email:</td><td>{{ user_object.email }}</td>
-        </tr>
-        </tr>
-            <td>Email:</td><td>{{ user_object.profile.git }}</td>
-        </tr>
-        <tr>
-            <td>Ссылка на GIT</td><td>{{ user_object.profile.git }}</td>
-        </tr>
-        <tr>
-            <td>Присоединился</td><td>{{ user_object.date_joined }}</td>
-        </tr>
-    </tbody>
-</table>
+    <div class="row">
+        <div class="col col-lg-6">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>Имя</td>
+                    <td>{{ user_object.first_name }}</td>
+                </tr>
+                <tr>
+                    <td>Фамилия</td>
+                    <td>{{ user_object.last_name }}</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>{{ user_object.email }}</td>
+                </tr>
+                <tr>
+                    <td>GIT:</td>
+                    <td>{{ user_object.profile.git }}</td>
+                </tr>
+                <tr>
+                    <td>Ссылка на GIT</td>
+                    <td>{{ user_object.profile.git }}</td>
+                </tr>
+                <tr>
+                    <td>Присоединился</td>
+                    <td>{{ user_object.date_joined }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col col-lg-6">
+            {% if user_object.profile.avatar %}
+                <img src="{{ user_object.profile.avatar.url }}" alt="user avatar">
+            {% endif %}
+        </div>
+    </div>
 
-    {% if user_object.profile.avatar %}
-        <img src="{{ user_object.profile.avatar.url }}" alt="user avatar">
-    {% endif %}
+
+
     {% include 'partial/project_list.html' with projects=user_object.projects.all %}
 {% endblock body %}
 
