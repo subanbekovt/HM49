@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Профиль{% endblock title %}
+{% block nav %}{% endblock nav %}
+{% block body %}
+    <h1>Профиль ползователя {{ user_object.username }}</h1>
+    <p><span>GIT:</span>{{ user_object.profile.git }}</p>
+    <p>{{ user_object.profile.about }}</p>
+    {% if user_object.profile.avatar %}
+        <img src="{{ user_object.profile.avatar.url }}" alt="user avatar">
+    {% endif %}
+    {% include 'partial/project_list.html' with projects=user_object.projects.all %}
+{% endblock body %}

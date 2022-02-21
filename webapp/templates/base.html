@@ -35,6 +35,9 @@
                     {% block nav %}
                     {% endblock %}
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:user_profile' user.id %}">Профиль {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:logout' %}">Выход</a>
                     </li>
                     <h2>{{ request.user }}</h2>

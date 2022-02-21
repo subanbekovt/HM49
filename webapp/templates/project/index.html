@@ -7,39 +7,5 @@
     {% include 'partial/simple_search.html' %}
 {% endblock %}
 {% block body %}
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center mt-5 mb-5 text-primary">Список проектов</h1>
-        </div>
-    </div>
-    <div class="row">
-        {% for project in projects %}
-            <div class="col col-xl-3 mb-3">
-                <div class="card h-100" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ project.pk }}. {{ project.title }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ project.description }}</h6>
-                        <div class="pt-auto">
-                            <div class="d-flex align-items-end">
-                                <p class="fw-bold">Дата начало:</p>
-                                <p class="ms-auto">{{ project.created_at }}</p>
-                            </div>
-                            <div class="d-flex align-items-end">
-                                <p class="fw-bold">Дата окончание:</p>
-                                <p class="ms-auto">{{ project.updated_at }}</p>
-                            </div>
-                            {% for user in project.users.all %}
-                                {{ user }}
-                                {% if not forloop.last %}, {% endif %}
-                            {% endfor %}
-                            <a href="{% url "webapp:project_view" project.pk %}">Подробнее...</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-    {% if is_paginated %}
-        {% include 'partial/pagination.html' %}
-    {% endif %}
+    {% include 'partial/project_list.html' %}
 {% endblock %}
