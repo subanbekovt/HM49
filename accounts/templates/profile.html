@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}Профиль{% endblock title %}
-{% block nav %}{% endblock nav %}
+{% block nav %}
+    {% if user_object == user %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:update_user' %}">Редактировать профиль</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:change_password' %}">Изменить пароль</a>
+        </li>
+    {% endif %}
+{% endblock nav %}
 {% block body %}
     <h1>Профиль ползователя {{ user_object.username }}</h1>
     <div class="row">
@@ -27,12 +36,16 @@
                     <td>Присоединился</td>
                     <td>{{ user_object.date_joined }}</td>
                 </tr>
+                <tr>
+                    <td>О себе:</td>
+                    <td>{{ user_object.profile.about }}</td>
+                </tr>
                 </tbody>
             </table>
         </div>
         <div class="col col-lg-6">
             {% if user_object.profile.avatar %}
-                <img src="{{ user_object.profile.avatar.url }}" alt="user avatar">
+                <img class="w-100" src="{{ user_object.profile.avatar.url }}" alt="user avatar">
             {% endif %}
         </div>
     </div>
